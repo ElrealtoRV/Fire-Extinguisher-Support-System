@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('contnum')->unique();
             $table->string('idnum')->unique();
-            $table->string('position_id');
+            $table->unsignedBigInteger('postion_id')->nullable();
+            $table->foreign('position_id')->references('id')->on('positions');
             $table->string('dept');
             $table->string('password');
             $table->rememberToken();
