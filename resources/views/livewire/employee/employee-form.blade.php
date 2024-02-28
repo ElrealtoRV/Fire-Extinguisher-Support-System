@@ -104,26 +104,22 @@
                                     <span class="login-danger">*</span>
                                 </label>
                                 <input class="form-control" type="text" wire:model="idnum" placeholder />
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group local-forms">
+                                <label>Position</label>
+                                <select class="form-control select" wire:model="position_id">
+
+                                    <option value="" selected>Select a Position</option>
+                                    @foreach ($positions as $position)
+                                        <option value="{{ $position->id }}">
+                                            {{ $position->description }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
-                        <div class="row">
-
-                        <div class="col-md-6">
-                        <div class="form-group local-forms">
-                            <label>Position</label>
-                            <select class="form-control select" wire:model="position_id">
-                            @php
-                                $positions = \App\Models\Position::all();
-                            @endphp
-                                <option value="" selected>Select a Position</option>
-                                @foreach ($positions as $position)
-                                    <option value="{{ $position->id }}">
-                                        {{ $position->description }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
 
                         <div class="col-md-6">
                             <div class="form-group local-forms">

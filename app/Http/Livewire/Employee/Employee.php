@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Employee;
 
 use App\Models\EmployeeList;
+use App\Models\Position;
 use Livewire\Component;
 
 class Employee extends Component
@@ -36,7 +37,7 @@ class Employee extends Component
     {
         $this->userId = $userId;
         $this->emit('userId', $this->userId);
-        $this->emit('openUserModal');
+        $this->emit('openEmployeeModal');
         
     }
 
@@ -58,9 +59,11 @@ class Employee extends Component
         if (!empty($this->search)) {
             $users->where(function ($query) {
                 $query->where('first_name', 'LIKE', '%' . $this->search . '%')
-                    ->orWhere('last_name', 'LIKE', '%' . $this->search . '%')
-                    ->orWhere('P', 'LIKE', '%' . $this->search . '%')
-                    ->orWhere('email', 'LIKE', '%' . $this->search . '%');
+                    ->orWhere('last_name', 'LIKE', '%' . $this->search . '%') 
+                    ->orWhere('email', 'LIKE', '%' . $this->search . '%')
+                    ->orWhereHas('position', function ($positionQuery) {
+                        $positionQuery->where('description', 'LIKE', '%' . $this->search . '%');
+                    });
             });
         }
 

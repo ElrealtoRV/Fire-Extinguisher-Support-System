@@ -95,13 +95,6 @@
 						<form method="get" action="/dashboard">
 						<input type="text" id="searchInput" placeholder="Search...">
 						<i class='bx bx-search search-icon' ></i>
-						<label for="filterDropdown"></label>
-						<select id="filterDropdown" name="users_filter">
-							
-						<option id="user"value="user"><i class="fas fa-user"></i> Users</option>
-    					<option id="employee" for="head" value="HEAD"><i class="fas fa-briefcase"></i> HEAD</option>
-    					<option id="employee" for="maintenance personnel"value="MAINTENANCE PERSONNEL"><i class="fas fa-briefcase"></i> MAINTENANCE PERSONNEL</option>
-						</select>
 						</form>
 						</div>
 					<table>
@@ -120,7 +113,7 @@
 									
 									<p>{{ $userlists->first_name }} {{ $userlists->last_name }}</p>
 								</td>
-								<td>{{ $userlists->position_id }}</td>
+								<td>{{ $userlists->position->description }}</td>
 								<td>
 								
 									<span class="status {{ $userlists->status == 1 ? 'active' : 'inactive' }}">
@@ -140,28 +133,27 @@
 					</div>
 					
 					
-		<div class="table-container">
-       	 <h1>To-Do List</h1>
+							<!-- resources/views/livewire/todo-list.blade.php -->
 
-        <ul class="todo-list">
-            <li class="todo-item">
-                <input type="checkbox">
-                <span class="task">Complete assignment</span>
-                <button>Delete</button>
-            </li>
-            <li class="todo-item">
-                <input type="checkbox">
-                <span class="task">Read a book</span>
-                <button>Delete</button>
-            </li>
-            <!-- Add more items as needed -->
-        </ul>
+							<div class="table-container">
+								<h1>To-Do List</h1>
 
-        <div class="add-task">
-            <input type="text" placeholder="Add a new task">
-            <button>Add</button>
-        </div>
-    </div>
+								<ul class="todo-list">
+								
+										<li class="todo-item">
+											<input type="checkbox">
+											<span class="task"></span>
+											<button >Delete</button>
+										</li>
+									
+								</ul>
+
+								<div class="add-task">
+									<input type="text" wire:model="newTask" placeholder="Add a new task">
+									<button >Add</button>
+								</div>
+							</div>
+
     
 
 </x-app-layout>

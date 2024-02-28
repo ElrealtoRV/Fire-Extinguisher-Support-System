@@ -70,7 +70,8 @@
 									</td>
 
 									<td>
-										{{ $user->position_id }}
+									{{ $user->position->description }}
+
 									</td>
 									<td>
 										{{ $user->email }}
@@ -86,12 +87,11 @@
 												<i class='fa fa-pen-to-square'></i>
 											</button>
 
-
-											{{-- <a class="btn btn-danger btn-sm mx-1"
-                                                    wire:click="deleteUser({{ $user->id }})" title="Delete">
-											<i class="fa fa-trash"></i>
-											</a> --}}
+											<a class="btn btn-danger btn-sm mx-1" wire:click="deleteUser({{ $user->id }})" title="Delete">
+												<i class="fa fa-trash"></i>
+											</a>
 										</div>
+																				</div>
 									</td>
 								</tr>
 								@endforeach
