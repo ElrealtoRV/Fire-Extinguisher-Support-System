@@ -22,5 +22,25 @@ class UserSeeder extends Seeder
             'password' => bcrypt('admin123')
         ])->assignRole('admin');
 
+          // Create staff user
+          User::create([
+            'first_name' => 'Jane',
+            'middle_name' => 'ehhh',
+            'last_name' => 'Doe',
+            'position' => 'head',
+            'email' => 'head@gmail.com',
+            'password' => bcrypt('staff123')
+        ])->assignRole('head');
+
+
+        User::create([
+            'first_name' => 'Charry',
+            'middle_name' => 'Garol',
+            'last_name' => 'Hetio',
+            'position' => 'maintenance personnel',
+            'email' => 'personnel@gmail.com',
+            'password' => bcrypt('staff123')
+        ])->assignRole('maintenance personnel');
+
     }
 }

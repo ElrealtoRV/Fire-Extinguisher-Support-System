@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Employee;
 
 use App\Models\EmployeeList;
+use App\Models\Position;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Component;
@@ -65,9 +66,9 @@ class EmployeeForm extends Component
                 'last_name'     => 'required',
                 'age'     => 'required',
                 'bdate'     => 'required',
-                'contnum'     => 'required',
+                'contnum'     => 'required|digits:11',
                 'email'         => ['required', 'email'],
-                'idnum'     => 'required',
+                'idnum'     => 'required|digits:9',
                 'position_id'      => 'required',
                 'dept'      => 'required',
                 
@@ -102,12 +103,12 @@ class EmployeeForm extends Component
                 'last_name'     => 'required',
                 'age'     => 'required',
                 'bdate'     => 'required',
-                'contnum'     => 'required',
+                'contnum'     => 'required|digits:11',
                 'email'         => ['required', 'string', 'email', 'max:255', 'unique:' . EmployeeList::class],
-                'idnum'     => 'required',
+                'idnum'     => 'required|digits:9',
                 'position_id'      => 'required',
                 'dept'      => 'required',
-                'password'      => ['required', 'confirmed', Rules\Password::defaults()],
+                'password'      => ['required', 'confirmed','min:6', Rules\Password::defaults()],
             ]);
 
             $user = EmployeeList::create([
@@ -141,8 +142,12 @@ class EmployeeForm extends Component
     public function render()
     {
         $roles = Role::all();
+        $positions = Position::all();
+        $filteredRoles = Role::whereIn('name', ['Head', 'Maintenance Personnel'])->get();
         return view('livewire.employee.employee-form', [
             'roles' => $roles,
+            'filteredRoles' => $filteredRoles,
+            'positions' => $positions,
         ]);
     }
 }

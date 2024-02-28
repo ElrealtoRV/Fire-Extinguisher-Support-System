@@ -7,8 +7,8 @@
 		});
 	});
 
-	window.livewire.on('closeUserModal', () => {
-		$('#userModal').modal('hide');
+	window.livewire.on('closeEmployeeModal', () => {
+		$('#EmployeeModal').modal('hide');
 	});
 	window.livewire.on('openEmployeeModal', () => {
 		$('#EmployeeModal').modal('show');

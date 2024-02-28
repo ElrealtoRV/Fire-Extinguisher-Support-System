@@ -37,7 +37,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('permission', PermissionList::class);
     Route::view('setting', 'setting')->name('setting');
     Route::get('user-list', UserList::class)->name('users.list');
-    Route::get('employee-list', Employee::class)->name('employee.list');
+    Route::get('employee-list', Employee::class);
     Route::get('positions', PositionList::class);
     
 

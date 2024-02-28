@@ -106,15 +106,25 @@
                                 <input class="form-control" type="text" wire:model="idnum" placeholder />
                             </div>
                         </div>
+                        <div class="row">
+
                         <div class="col-md-6">
-                            <div class="form-group local-forms">
-                                <label>
-                                    Position
-                                    <span class="login-danger">*</span>
-                                </label>
-                                <input class="form-control" type="text" wire:model="position_id" placeholder />
-                            </div>
+                        <div class="form-group local-forms">
+                            <label>Position</label>
+                            <select class="form-control select" wire:model="position_id">
+                            @php
+                                $positions = \App\Models\Position::all();
+                            @endphp
+                                <option value="" selected>Select a Position</option>
+                                @foreach ($positions as $position)
+                                    <option value="{{ $position->id }}">
+                                        {{ $position->description }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
+                    </div>
+
                         <div class="col-md-6">
                             <div class="form-group local-forms">
                                 <label>
@@ -127,7 +137,7 @@
                     </div>
                     @if (!isset($userId))
                         <div class="row">
-                        <h5>Security Information</h5>
+                        <h5 style=" color: orange; margin-top: -5px; padding:10px; font-size:15px;">Security Information</h5>
                             <div class="col-md-6">
                                 <div class="form-group local-forms">
                                     <label>
@@ -204,7 +214,8 @@
 						</div> --}}
                             <div style="height: 150px; overflow-y: scroll;">
                                 @if (empty($selectedRoles))
-                                    @forelse ($roles as $role)
+                                @forelse ($filteredRoles as $role)
+
                                         <div class="form-check mb-2">
                                             <input wire:model.defer="roleCheck" type="checkbox" class="form-check-input"
                                                 value="{{ $role->name }}" id="{{ $role->name }}">
@@ -216,7 +227,8 @@
                                         <p>No roles found</p>
                                     @endforelse
                                 @else
-                                    @forelse ($roles as $role)
+                                @forelse ($filteredRoles as $role)
+
                                         <div class="form-check mb-2">
                                             <input wire:model.defer="selectedRoles" type="checkbox"
                                                 class="form-check-input" value="{{ $role->name }}"

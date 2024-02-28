@@ -7,4 +7,11 @@
         });
     });
 
+    window.livewire.on('closePositionModal', () => {
+        $('#positionModal').modal('hide');
+    });
+    window.livewire.on('openPositionModal', () => {
+        $('#positionModal').modal('show');
+    });
+
 </script>

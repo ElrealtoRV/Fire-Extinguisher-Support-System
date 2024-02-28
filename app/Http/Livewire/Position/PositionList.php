@@ -2,15 +2,15 @@
 
 namespace App\Http\Livewire\Position;
 
-use Livewire\Component;
 use App\Models\Position;
+use Livewire\Component;
 
 class PositionList extends Component
 {
     public $positionId;
     public $search = '';
-    public $action = '';  //flash
-    public $message = '';  //flash
+    public $action = ''; 
+    public $message = ''; 
 
     protected $listeners = [
         'refreshParentPosition' => '$refresh',

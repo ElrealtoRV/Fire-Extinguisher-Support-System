@@ -16,8 +16,10 @@
 
 						<li><a href="{{ asset('user-list') }}">Users</a></li>
 						<li><a href="{{ asset('employee-list') }}">Employee</a></li>
+						<li><a href="/positions">Position</a></li>
 					</ul>
 				</li>
+
 
 				<li>
 					<a href="#"><span class="menu-side"><i class="fas fa-map-marker"></i></span>

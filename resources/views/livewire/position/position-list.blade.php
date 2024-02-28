@@ -52,7 +52,7 @@
 								@foreach ($positions as $position)
 									<tr>
 										<td>
-											{{ $position->description }}    
+											{{ $position->description }}
 										</td>
 
 										<td class="text-center">
@@ -86,5 +86,5 @@
 	</div>
 </div>
 @section('custom_script')
-	@include('layouts.scripts.position-scripts')
+	@include('layouts.scripts.position')
 @endsection

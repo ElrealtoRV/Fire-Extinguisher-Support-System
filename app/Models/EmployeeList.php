@@ -12,15 +12,21 @@ use Spatie\Permission\Traits\HasRoles;
 class EmployeeList extends Model
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
-   
+    protected $guard_name = 'web';
     protected $table = 'employees';
     protected $fillable = [
        'first_name', 'middle_name', 'last_name','age','bdate','contnum', 'idnum','position_id','dept', 'email', 'password',
      ];
+
+     public function position()
+     {
+         return $this->belongsTo(Position::class, 'position_id', 'id');
+     }
      public function save(array $options = [])
      {
          // Hash the password using Bcrypt before saving
          $this->attributes['password'] = Hash::make($this->attributes['password']);
          parent::save($options);
      }
+
 }
