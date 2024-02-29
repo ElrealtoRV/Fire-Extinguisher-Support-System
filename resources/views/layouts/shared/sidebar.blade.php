@@ -3,7 +3,7 @@
 		<div class="sidebar-menu" id="sidebar-menu">
 			<ul>
 				<li>
-					<a href="dashboard"><span class="menu-side"><i class="fa-solid fa-house"></i></span>
+					<a href="/dashboard"><span class="menu-side"><i class="fa-solid fa-house"></i></span>
 						<span>Dashboard</span></a>
 				</li>
 
@@ -26,19 +26,10 @@
 						<span>Map</span>
 					</a>
 				</li>
-
-				<li class="submenu">
+				<li>
 					<a href="#"><span class="menu-side"><i class="fas fa-fire-extinguisher"></i></span>
-						<span>FEM System</span> <span class="menu-arrow"></span>
+						<span>Fire Extinguisher</span>
 					</a>
-
-					<ul style="display: none;">
-
-						<li><a href="{{ asset('fire-extinguisher') }}">Fire Extinguisher</a></li>
-						<li><a href="{{ asset('type') }}">Type</a></li>
-						<li><a href="{{ asset('location') }}">Location</a></li>
-						<li><a href="{{ asset('inspection-findings ') }}">Inspection Findings</a></li>
-					</ul>
 				</li>
 				<li>
 					<a href="#"><span class="menu-side"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

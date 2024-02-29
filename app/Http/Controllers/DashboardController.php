@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\UserList;
 use App\Models\EmployeeList;
-use App\Http\Livewire\TodoList;
 use App\Models\User;
 use App\Models\Task;
 use Illuminate\Http\Request;
@@ -41,12 +40,10 @@ class DashboardController extends Controller
 
         $time = Carbon::now()->format('H');
         $operations = 0;
-
          
         $users = UserList::count();
         $userlist = EmployeeList::all();
         $employeeCount = EmployeeList::count();
-        $tasks = Task::all();
 
         
    
@@ -57,7 +54,6 @@ class DashboardController extends Controller
             'users' => $users,
             'employeeCounts' => $employeeCount,
             'userlist' => $userlist,
-            'tasks' => $tasks,
 
         ]);
     }
