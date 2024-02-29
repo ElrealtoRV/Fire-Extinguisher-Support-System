@@ -130,31 +130,29 @@
 					</table>
 					</div>
 					</div>
-					</div>
 					
 					
-							<!-- resources/views/livewire/todo-list.blade.php -->
+			
 
-							<div class="table-container">
-								<h1>To-Do List</h1>
+				
 
-								<ul class="todo-list">
-								
-										<li class="todo-item">
-											<input type="checkbox">
-											<span class="task"></span>
-											<button >Delete</button>
-										</li>
-									
-								</ul>
+				</div>
+				</div>
+				@livewire('todo-list.todo-list')
+				@livewire('add-task-modal.add-task-modal')
+				@livewire('add-task-modal.view-task-modal', ['tasks' => $tasks])
 
-								<div class="add-task">
-									<input type="text" wire:model="newTask" placeholder="Add a new task">
-									<button >Add</button>
-								</div>
-							</div>
+            <script>
+                // Listen for the 'viewTask' event and show the view modal
+                Livewire.on('viewTask', function (taskId) {
+                    Livewire.emit('showViewTaskModal', taskId);
+                });
 
-    
-
+                // Listen for the 'taskAdded' event and reload the Livewire component
+                Livewire.on('taskAdded', function () {
+                    Livewire.emit('refreshComponent', 'todo-list');
+                });
+            </script>
+		
 </x-app-layout>
 @endif

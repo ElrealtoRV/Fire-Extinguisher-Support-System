@@ -58,7 +58,7 @@
 
         <!-- Page Content -->
         <div class="page-wrapper">
-            {{ $slot }}
+                {{ $slot }}
         </div>
         @yield('delete_modal')
     </div>
@@ -86,6 +86,7 @@
     @yield('custom_script')
    
     @stack('script')
+    
 </body>
 
 </html>
